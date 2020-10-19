@@ -32,49 +32,56 @@ namespace XMLWeather
             double high = Convert.ToDouble(Form1.days[0].tempHigh);
             maxOutput.Text = high.ToString("##") + " \u00B0";
 
-            double conditionCur = Convert.ToDouble(Form1.days[0].condition);
+             double conditionCur = Convert.ToDouble(Form1.days[0].condition);
+            //double conditionCur = 521;
             #region Condition
             if (conditionCur == 800)
             {
                 currentWeather.Text = "Clear Sky";
                 BackColor = Color.DeepSkyBlue;
-                currentWeatherBox.BackgroundImage = XMLWeather.Properties.Resources.clearSky;
+                currentWeatherBox.BackgroundImage = Properties.Resources.clearSky;
             }
             else if (conditionCur > 800 && conditionCur < 805)
             {
                 currentWeather.Text = "Cloudy";
                 BackColor = Color.SlateGray;
-                currentWeatherBox.BackgroundImage = XMLWeather.Properties.Resources.cloudy;
+                currentWeatherBox.BackgroundImage = Properties.Resources.cloudy;
             }
             else if (conditionCur > 700 && conditionCur < 782)
             {
                 currentWeather.Text = "Fog";
                 BackColor = Color.SlateGray;
-                currentWeatherBox.BackgroundImage = XMLWeather.Properties.Resources.atmosphere;
+                currentWeatherBox.BackgroundImage = Properties.Resources.atmosphere;
             }
             else if (conditionCur > 599 && conditionCur < 623)
             {
                 currentWeather.Text = "Snow";
                 BackColor = Color.Gainsboro;
-                currentWeatherBox.BackgroundImage = XMLWeather.Properties.Resources.snow;
+                currentWeatherBox.BackgroundImage = Properties.Resources.snow;
             }
-            else if (conditionCur > 499 && conditionCur < 532)
+            else if (conditionCur > 519 && conditionCur < 532)
+            {
+                currentWeather.Text = "Rain";
+                BackColor = Color.Gainsboro;
+                currentWeatherBox.BackgroundImage = Properties.Resources.showerRain;
+            }
+            else if (conditionCur > 499 && conditionCur < 512)
             {
                 currentWeather.Text = "Rain";
                 BackColor = Color.CornflowerBlue;
-                currentWeatherBox.BackgroundImage = XMLWeather.Properties.Resources.rain;
+                currentWeatherBox.BackgroundImage = Properties.Resources.rain;
             }
             else if (conditionCur > 299 && conditionCur < 322)
             {
                 currentWeather.Text = "Drizzle";
                 BackColor = Color.CornflowerBlue;
-                currentWeatherBox.BackgroundImage = XMLWeather.Properties.Resources.rain;
+                currentWeatherBox.BackgroundImage = Properties.Resources.rain;
             }
             else if (conditionCur > 199 && conditionCur < 233)
             {
                 currentWeather.Text = "ThunderStorm";
                 BackColor = Color.DimGray;
-                currentWeatherBox.BackgroundImage = XMLWeather.Properties.Resources.thunderstorm;
+                currentWeatherBox.BackgroundImage = Properties.Resources.thunderstorm;
             }
             #endregion
         }

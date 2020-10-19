@@ -60,7 +60,7 @@ namespace XMLWeather
             // current info is not included in forecast file so we need to use this file to get it
             XmlReader reader = XmlReader.Create("http://api.openweathermap.org/data/2.5/weather?q=Stratford,CA&mode=xml&units=metric&appid=3f2e224b815c0ed45524322e145149f0");
 
-            //TODO: find the city and current temperature and add to appropriate item in days list
+            // find the city and current temperature and add to appropriate item in days list
 
             reader.ReadToFollowing("city");
             days[0].location = reader.GetAttribute("name");
@@ -73,18 +73,6 @@ namespace XMLWeather
 
             reader.ReadToFollowing("weather");
             days[0].condition = reader.GetAttribute("number");
-
-            
-
-            // thunderstorm > 200 && < 233
-            //drizzle > 300 && < 322
-            //rain > 500 && < 532
-            //snow > 600 && < 623
-            //atmosphere > 701 && < 782
-            //clouds > 801 && < 805
-            //clear == 800
-
-        
         }
 
 
