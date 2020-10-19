@@ -31,6 +31,7 @@ namespace XMLWeather
         private void ExtractForecast()
         {
             XmlReader reader = XmlReader.Create("http://api.openweathermap.org/data/2.5/forecast/daily?q=Stratford,CA&mode=xml&units=metric&cnt=7&appid=3f2e224b815c0ed45524322e145149f0");
+      //      XmlReader reader = XmlReader.Create("WeatherData.xml");
 
             while (reader.Read())
             {
@@ -41,12 +42,17 @@ namespace XMLWeather
                 reader.ReadToFollowing("time");
                 d.date = reader.GetAttribute("day");
 
+                reader.ReadToFollowing("symbol");
+                d.condition = reader.GetAttribute("number");
+
                 reader.ReadToFollowing("temperature");
                 d.tempLow = reader.GetAttribute("min");
                 d.tempHigh = reader.GetAttribute("max");
+
                 //TODO: if day object not null add to the days list
                 days.Add(d);
             }
+           // reader.Close();
         }
 
         private void ExtractCurrent()
@@ -58,10 +64,27 @@ namespace XMLWeather
 
             reader.ReadToFollowing("city");
             days[0].location = reader.GetAttribute("name");
-            reader.ReadToFollowing("weather");
-            days[0].condition = reader.GetAttribute("name");
-           // reader.ReadToFollowing("condition");
 
+            reader.ReadToFollowing("temperature");
+            days[0].currentTemp = reader.GetAttribute("value");
+
+            reader.ReadToFollowing("feels_like");
+            days[0].feelsLike = reader.GetAttribute("value");
+
+            reader.ReadToFollowing("weather");
+            days[0].condition = reader.GetAttribute("number");
+
+            
+
+            // thunderstorm > 200 && < 233
+            //drizzle > 300 && < 322
+            //rain > 500 && < 532
+            //snow > 600 && < 623
+            //atmosphere > 701 && < 782
+            //clouds > 801 && < 805
+            //clear == 800
+
+        
         }
 
 
